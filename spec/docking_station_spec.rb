@@ -1,13 +1,15 @@
-require './lib/docking_station.rb'
+require "./lib/docking_station.rb"
 
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
-  it "returns a bike object when release_bike method is called" do
+  it "returns a bike object when release_bike method is called and a bike is docked" do
     docking_station = DockingStation.new
+    docking_station.dock(Bike.new)
     expect(docking_station.release_bike.is_a?(Bike)).to eq true
   end
-  it "returns a bike object that is working when release_bike method called" do
+  it "returns a bike object that is working when release_bike method called and a bike is docked" do
     docking_station = DockingStation.new
+   docking_station.dock(Bike.new)
     expect(docking_station.release_bike.working?).to eq true
   end
 
@@ -23,6 +25,10 @@ describe DockingStation do
     bike = Bike.new
     subject.dock(bike)
     expect(subject.bike).to eq bike
+  end
+
+  it "release_bike method to raise error if called when there are no bikes" do
+     expect{DockingStation.new.release_bike}.to raise_error
   end
 end
 

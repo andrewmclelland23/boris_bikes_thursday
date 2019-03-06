@@ -1,5 +1,5 @@
 class Bike
-  @bike_name
+  @bike = Bike.new
 
   def working?
     true
