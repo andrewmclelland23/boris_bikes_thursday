@@ -1,5 +1,5 @@
 class Bike
-  @bike = Bike.new
+  attr_reader :bike
 
   def working?
     true
